@@ -19,6 +19,9 @@ public class User {
 
     @Column(nullable = false)
     private Double vaultBalance = 0.0;
+    private String otp;
+
+    private boolean otpVerified;
 
     private LocalDateTime vaultUnlockTime;
 
@@ -89,4 +92,19 @@ public class User {
 
         this.transactions = transactions;
     }
+    public String getOtp() {
+    return otp;
+}
+
+public void setOtp(String otp) {
+    this.otp = otp;
+}
+
+public boolean getOtpVerified() {
+    return otpVerified;
+}
+
+public void setOtpVerified(boolean otpVerified) {
+    this.otpVerified = otpVerified;
+}
 }
