@@ -186,6 +186,19 @@ public class HomeController {
 
         return "face-auth";
     }
+    @GetMapping("/profile")
+public String profilePage(HttpSession session,
+                          Model model) {
+
+    User user =
+            (User) session.getAttribute(
+                    "loggedInUser"
+            );
+
+    model.addAttribute("user", user);
+
+    return "profile";
+}
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {

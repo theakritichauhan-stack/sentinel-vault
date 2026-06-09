@@ -755,3 +755,34 @@ body{
 
     color: white;
 }
+.profile-card {
+
+    width: 400px;
+
+    margin: auto;
+
+    margin-top: 80px;
+
+    background: rgba(255,255,255,0.08);
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    text-align: center;
+
+    backdrop-filter: blur(15px);
+
+    box-shadow: 0 0 25px rgba(0,255,255,0.3);
+
+    color: white;
+}
+
+.profile-icon {
+
+    font-size: 70px;
+
+    margin-bottom: 20px;
+
+    color: cyan;
+}

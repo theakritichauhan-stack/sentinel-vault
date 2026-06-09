@@ -49,7 +49,16 @@
                 Vault Security
             </a>
         </li>
+        
+<li>
+    <a href="/profile">
 
+        <i class="fa-solid fa-user"></i>
+
+        Profile
+
+    </a>
+</li>
         <li>
             <a href="/face-auth">
                 <i class="fa-solid fa-user-secret"></i>
@@ -285,7 +294,7 @@ updateClock();
 
 <script th:inline="javascript">
 
-let unlockTime =
+const unlockTime =
 "[[${session.loggedInUser.vaultUnlockTime}]]";
 
 function updateVaultTimer() {
@@ -295,8 +304,10 @@ function updateVaultTimer() {
                     "vault-timer"
             );
 
-    if(!unlockTime ||
-       unlockTime === "null" ||
+    console.log("Vault Time:",
+                unlockTime);
+
+    if(unlockTime === "null" ||
        unlockTime === "") {
 
         timer.innerHTML =
@@ -305,18 +316,21 @@ function updateVaultTimer() {
         return;
     }
 
-    const unlockDate =
-            new Date(
-                    unlockTime.replace(
-                            " ",
-                            "T"
-                    )
+    const formattedTime =
+            unlockTime.replace(
+                    " ",
+                    "T"
             );
 
-    const now = new Date();
+    const unlockDate =
+            new Date(formattedTime);
+
+    const now =
+            new Date();
 
     const diff =
-            unlockDate - now;
+            unlockDate.getTime() -
+            now.getTime();
 
     if(diff <= 0) {
 
@@ -344,14 +358,15 @@ function updateVaultTimer() {
             );
 
     timer.innerHTML =
+
             hours + "h " +
             minutes + "m " +
             seconds + "s";
 }
 
-setInterval(updateVaultTimer, 1000);
-
 updateVaultTimer();
+
+setInterval(updateVaultTimer, 1000);
 
 </script>
 
