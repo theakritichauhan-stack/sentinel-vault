@@ -62,22 +62,40 @@ public class BankController {
         return "redirect:/transactions";
     }
 
-    @PostMapping("/withdraw")
-    public String withdraw(@RequestParam Double amount,
-                           HttpSession session) {
+   @PostMapping("/withdraw")
+public String withdraw(@RequestParam Double amount,
+                       HttpSession session,
+                       Model model) {
 
-        User user =
-                (User) session.getAttribute(
-                        "loggedInUser"
-                );
+    User user =
+            (User) session.getAttribute(
+                    "loggedInUser"
+            );
 
-        transactionService.withdraw(
-                amount,
-                user
-        );
+    String otp =
+            String.valueOf(
+                    (int)(Math.random() * 9000)
+                    + 1000
+            );
 
-        return "redirect:/transactions";
-    }
+    user.setOtp(otp);
+
+    user.setOtpVerified(false);
+
+    userService.register(user);
+
+    session.setAttribute(
+            "withdrawAmount",
+            amount
+    );
+
+    model.addAttribute(
+            "generatedOtp",
+            otp
+    );
+
+    return "otp-verification";
+}
 
     @PostMapping("/lock-money")
     public String lockMoney(@RequestParam Double amount,
