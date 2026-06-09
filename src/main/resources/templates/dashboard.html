@@ -49,7 +49,7 @@
                 Vault Security
             </a>
         </li>
-        
+
 <li>
     <a href="/profile">
 
@@ -292,9 +292,11 @@ updateClock();
 
 </script>
 
+</script>
+
 <script th:inline="javascript">
 
-const unlockTime =
+let unlockTime =
 "[[${session.loggedInUser.vaultUnlockTime}]]";
 
 function updateVaultTimer() {
@@ -304,10 +306,8 @@ function updateVaultTimer() {
                     "vault-timer"
             );
 
-    console.log("Vault Time:",
-                unlockTime);
-
-    if(unlockTime === "null" ||
+    if(!unlockTime ||
+       unlockTime === "null" ||
        unlockTime === "") {
 
         timer.innerHTML =
@@ -325,12 +325,19 @@ function updateVaultTimer() {
     const unlockDate =
             new Date(formattedTime);
 
-    const now =
-            new Date();
+    if(isNaN(unlockDate.getTime())) {
+
+        timer.innerHTML =
+                "No Active Lock";
+
+        return;
+    }
+
+    const now = new Date();
 
     const diff =
-            unlockDate.getTime() -
-            now.getTime();
+            unlockDate.getTime()
+            - now.getTime();
 
     if(diff <= 0) {
 
@@ -364,9 +371,9 @@ function updateVaultTimer() {
             seconds + "s";
 }
 
-updateVaultTimer();
-
 setInterval(updateVaultTimer, 1000);
+
+updateVaultTimer();
 
 </script>
 
