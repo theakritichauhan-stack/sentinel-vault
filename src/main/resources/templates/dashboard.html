@@ -297,7 +297,7 @@ updateClock();
 <script th:inline="javascript">
 
 let unlockTime =
-"[[${session.loggedInUser.vaultUnlockTime}]]";
+'[[${session.loggedInUser.vaultUnlockTime}]]';
 
 function updateVaultTimer() {
 
@@ -317,10 +317,10 @@ function updateVaultTimer() {
     }
 
     const formattedTime =
-            unlockTime.replace(
-                    " ",
-                    "T"
-            );
+        unlockTime
+        .replace(" ", "T")
+        .replace(".0", "");
+            
 
     const unlockDate =
             new Date(formattedTime);
