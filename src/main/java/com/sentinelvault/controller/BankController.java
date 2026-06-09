@@ -96,6 +96,43 @@ public String withdraw(@RequestParam Double amount,
 
     return "otp-verification";
 }
+@PostMapping("/verify-otp")
+public String verifyOtp(@RequestParam String enteredOtp,
+                        HttpSession session,
+                        Model model) {
+
+    User user =
+            (User) session.getAttribute(
+                    "loggedInUser"
+            );
+
+    Double amount =
+            (Double) session.getAttribute(
+                    "withdrawAmount"
+            );
+
+    if(user.getOtp().equals(enteredOtp)) {
+
+        transactionService.withdraw(
+                amount,
+                user
+        );
+
+        return "redirect:/transactions";
+    }
+
+    model.addAttribute(
+            "error",
+            "Invalid OTP"
+    );
+
+    model.addAttribute(
+            "generatedOtp",
+            user.getOtp()
+    );
+
+    return "otp-verification";
+}
 
     @PostMapping("/lock-money")
     public String lockMoney(@RequestParam Double amount,
