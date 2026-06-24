@@ -176,10 +176,19 @@ public class HomeController {
     }
 
     @GetMapping("/vault-security")
-    public String vaultSecurityPage() {
+public String vaultSecurityPage(HttpSession session) {
 
-        return "vault-security";
+    User user =
+            (User) session.getAttribute(
+                    "loggedInUser"
+            );
+
+    if(user == null) {
+        return "redirect:/login";
     }
+
+    return "vault-security";
+}
 
     @GetMapping("/face-auth")
     public String faceAuthPage() {
