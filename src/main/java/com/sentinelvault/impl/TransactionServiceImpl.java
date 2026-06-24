@@ -57,7 +57,7 @@ public Transaction withdraw(Double amount,
 
         transaction.setType("WITHDRAW");
         transaction.setAmount(amount);
-
+        System.out.println("Saving Category = " + category);
         transaction.setCategory(category);
         transaction.setDescription("Money Withdrawn");
 

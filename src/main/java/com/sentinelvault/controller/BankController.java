@@ -62,7 +62,7 @@ public class BankController {
         return "redirect:/transactions";
     }
 
-   @PostMapping("/withdraw")
+  @PostMapping("/withdraw")
 public String withdraw(
         @RequestParam Double amount,
         @RequestParam String category,
@@ -74,6 +74,10 @@ public String withdraw(
                     "loggedInUser"
             );
 
+    if(user == null) {
+        return "redirect:/login";
+    }
+
     String otp =
             String.valueOf(
                     (int)(Math.random() * 9000)
@@ -81,7 +85,6 @@ public String withdraw(
             );
 
     user.setOtp(otp);
-
     user.setOtpVerified(false);
 
     userService.register(user);
@@ -113,21 +116,22 @@ public String verifyOtp(@RequestParam String enteredOtp,
                     "loggedInUser"
             );
 
-    Double amount =
-            (Double) session.getAttribute(
-                    "withdrawAmount"
+    Double amount =(Double) session.getAttribute(
+                 "withdrawAmount"
             );
-            String category =
-        (String) session.getAttribute(
+            String category =(String) session.getAttribute(
                 "withdrawCategory"
         );
 
     if(user.getOtp().equals(enteredOtp)) {
-
+    System.out.println("Selected Category = " + category);
         transactionService.withdraw(
-                amount,
-                user
-        );
+        amount,
+        category,
+        user
+);
+
+        
 
         return "redirect:/transactions";
     }
