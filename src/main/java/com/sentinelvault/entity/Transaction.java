@@ -13,6 +13,9 @@ public class Transaction {
     private String type;
     private double amount;
     private String riskLevel;
+    private String category;
+    private String description;
+   
     @ManyToOne
     private User user;
 
@@ -43,6 +46,21 @@ public void setUser(User user) {
 
 public void setRiskLevel(String riskLevel) {
     this.riskLevel = riskLevel;
+}
+public String getCategory() {
+    return category;
+}
+
+public void setCategory(String category) {
+    this.category = category;
+}
+
+public String getDescription() {
+    return description;
+}
+
+public void setDescription(String description) {
+    this.description = description;
 }
 
     public String getStatus() { return status; }

@@ -131,17 +131,10 @@
 
         <tr>
 
-            <th>
-                Type
-            </th>
-
-            <th>
-                Amount
-            </th>
-
-            <th>
-                Risk Level
-            </th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Risk Level</th>
 
         </tr>
 
@@ -155,8 +148,9 @@
 
             <td th:text="'₹ ' + ${transaction.amount}"></td>
 
-            <td th:text="${transaction.riskLevel}"></td>
+            <td th:text="${transaction.category}"></td>
 
+            <td th:text="${transaction.riskLevel}"></td>
         </tr>
 
         </tbody>

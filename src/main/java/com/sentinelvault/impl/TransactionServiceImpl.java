@@ -29,10 +29,11 @@ public class TransactionServiceImpl implements TransactionService {
 
         Transaction transaction = new Transaction();
 
-        transaction.setType("DEPOSIT");
+       transaction.setType("DEPOSIT");
+       transaction.setAmount(amount);
 
-        transaction.setAmount(amount);
-
+       transaction.setCategory("Income");
+        transaction.setDescription("Money Deposited");
         if(amount > 50000) {
 
             transaction.setRiskLevel("HIGH");
@@ -54,8 +55,10 @@ public class TransactionServiceImpl implements TransactionService {
         Transaction transaction = new Transaction();
 
         transaction.setType("WITHDRAW");
-
         transaction.setAmount(amount);
+
+        transaction.setCategory("Others");
+        transaction.setDescription("Money Withdrawn");
 
         if(amount > 50000) {
 
