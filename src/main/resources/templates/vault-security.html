@@ -89,9 +89,8 @@
 
 </form>
 
-<div th:if="${session.loggedInUser.emergencyUnlocked}"
+ <div th:if="${session.loggedInUser != null and session.loggedInUser.emergencyUnlocked}"
      class="alert alert-warning mt-5">
-
     <h4>
         ⚠ Emergency Access Used
     </h4>
