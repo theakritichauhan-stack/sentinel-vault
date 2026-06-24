@@ -17,17 +17,19 @@ public class AdvisorController {
     private AIAdvisorService aiAdvisorService;
 
     @GetMapping("/advisor")
-    public String advisorPage(Model model,
-                              HttpSession session) {
+public String advisorPage(Model model,
+                          HttpSession session) {
 
-        User user =
-                (User) session.getAttribute(
-                        "loggedInUser"
-                );
+    User user =
+            (User) session.getAttribute(
+                    "loggedInUser"
+            );
 
-        if(user == null) {
-            return "redirect:/login";
-        }
+    if (user == null) {
+        return "redirect:/login";
+    }
+
+    try {
 
         model.addAttribute(
                 "foodTotal",
@@ -61,6 +63,16 @@ public class AdvisorController {
                 )
         );
 
-        return "advisor";
+    } catch (Exception e) {
+
+        e.printStackTrace();
+
+        model.addAttribute("foodTotal", 0);
+        model.addAttribute("rentTotal", 0);
+        model.addAttribute("shoppingTotal", 0);
+        model.addAttribute("transportTotal", 0);
     }
+
+    return "advisor";
+}
 }
