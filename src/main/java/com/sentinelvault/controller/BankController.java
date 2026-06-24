@@ -63,9 +63,11 @@ public class BankController {
     }
 
    @PostMapping("/withdraw")
-public String withdraw(@RequestParam Double amount,
-                       HttpSession session,
-                       Model model) {
+public String withdraw(
+        @RequestParam Double amount,
+        @RequestParam String category,
+        HttpSession session,
+        Model model) {
 
     User user =
             (User) session.getAttribute(
@@ -75,7 +77,7 @@ public String withdraw(@RequestParam Double amount,
     String otp =
             String.valueOf(
                     (int)(Math.random() * 9000)
-                    + 1000
+                            + 1000
             );
 
     user.setOtp(otp);
@@ -87,6 +89,11 @@ public String withdraw(@RequestParam Double amount,
     session.setAttribute(
             "withdrawAmount",
             amount
+    );
+
+    session.setAttribute(
+            "withdrawCategory",
+            category
     );
 
     model.addAttribute(
@@ -110,6 +117,10 @@ public String verifyOtp(@RequestParam String enteredOtp,
             (Double) session.getAttribute(
                     "withdrawAmount"
             );
+            String category =
+        (String) session.getAttribute(
+                "withdrawCategory"
+        );
 
     if(user.getOtp().equals(enteredOtp)) {
 

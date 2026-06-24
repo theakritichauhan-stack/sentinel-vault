@@ -11,7 +11,8 @@ public interface TransactionService {
                         User user);
 
     Transaction withdraw(Double amount,
-                         User user);
+                     String category,
+                     User user);
 
     List<Transaction> getAllTransactions();
 

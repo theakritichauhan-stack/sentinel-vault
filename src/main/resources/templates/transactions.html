@@ -98,23 +98,45 @@
         </form>
 
         <form action="/withdraw"
-              method="post">
+      method="post">
 
-            <input type="number"
-                   step="0.01"
-                   name="amount"
-                   placeholder="Withdraw Amount"
-                   class="form-control mb-2"
-                   required>
+    <input type="number"
+           step="0.01"
+           name="amount"
+           placeholder="Withdraw Amount"
+           class="form-control mb-2"
+           required>
 
-            <button type="submit"
-                    class="btn btn-danger glow-btn">
+    <select name="category"
+            class="form-control mb-2"
+            required>
 
-                Withdraw Money
+        <option value="">Select Category</option>
 
-            </button>
+        <option value="Food">Food</option>
 
-        </form>
+        <option value="Rent">Rent</option>
+
+        <option value="Shopping">Shopping</option>
+
+        <option value="Transport">Transport</option>
+
+        <option value="Utilities">Utilities</option>
+
+        <option value="Entertainment">Entertainment</option>
+
+        <option value="Others">Others</option>
+
+    </select>
+
+    <button type="submit"
+            class="btn btn-danger glow-btn">
+
+        Withdraw Money
+
+    </button>
+
+</form>
 
     </div>
 

@@ -49,15 +49,16 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public Transaction withdraw(Double amount,
-                                User user) {
+public Transaction withdraw(Double amount,
+                            String category,
+                            User user) {
 
         Transaction transaction = new Transaction();
 
         transaction.setType("WITHDRAW");
         transaction.setAmount(amount);
 
-        transaction.setCategory("Others");
+        transaction.setCategory(category);
         transaction.setDescription("Money Withdrawn");
 
         if(amount > 50000) {
