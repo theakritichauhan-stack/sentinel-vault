@@ -60,4 +60,25 @@ public int calculateFinancialScore(User user) {
 
     return Math.max(score, 0);
 }
+@Override
+public String generateAdvice(User user) {
+
+    double food =
+            getCategoryTotal(user, "Food");
+
+    double shopping =
+            getCategoryTotal(user, "Shopping");
+
+    if(shopping > 5000) {
+
+        return "High shopping expenses detected. Reducing shopping by 10% could increase your monthly savings.";
+    }
+
+    if(food > 5000) {
+
+        return "Your food spending is high. Consider reducing outside meals to save more money.";
+    }
+
+    return "Excellent financial habits. Keep maintaining your spending balance.";
+}
 }

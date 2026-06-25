@@ -9,4 +9,5 @@ public interface AIAdvisorService {
             String category
     );
     int calculateFinancialScore(User user);
+    String generateAdvice(User user);
 }

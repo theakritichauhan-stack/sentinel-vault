@@ -67,6 +67,10 @@ public String advisorPage(Model model,
         aiAdvisorService
                 .calculateFinancialScore(user)
 );
+model.addAttribute(
+        "advice",
+        aiAdvisorService.generateAdvice(user)
+);
 
     return "advisor";
 }
