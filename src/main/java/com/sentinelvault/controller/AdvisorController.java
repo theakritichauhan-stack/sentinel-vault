@@ -37,9 +37,29 @@ public String advisorPage(Model model,
             )
     );
 
-    model.addAttribute("rentTotal", 0);
-    model.addAttribute("shoppingTotal", 0);
-    model.addAttribute("transportTotal", 0);
+    model.addAttribute(
+            "rentTotal",
+            aiAdvisorService.getCategoryTotal(
+                    user,
+                    "Rent"
+            )
+    );
+
+    model.addAttribute(
+            "shoppingTotal",
+            aiAdvisorService.getCategoryTotal(
+                    user,
+                    "Shopping"
+            )
+    );
+
+    model.addAttribute(
+            "transportTotal",
+            aiAdvisorService.getCategoryTotal(
+                    user,
+                    "Transport"
+            )
+    );
 
     return "advisor";
 }
