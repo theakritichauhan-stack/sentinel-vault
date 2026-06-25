@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 //@Controller
 public class AdvisorController {
@@ -17,62 +19,18 @@ public class AdvisorController {
     private AIAdvisorService aiAdvisorService;
 
     @GetMapping("/advisor")
-public String advisorPage(Model model,
-                          HttpSession session) {
+@ResponseBody
+public String advisorPage(HttpSession session) {
 
     User user =
             (User) session.getAttribute(
                     "loggedInUser"
             );
 
-    if (user == null) {
-        return "redirect:/login";
+    if(user == null) {
+        return "USER IS NULL";
     }
 
-    try {
-
-        model.addAttribute(
-                "foodTotal",
-                aiAdvisorService.getCategoryTotal(
-                        user,
-                        "Food"
-                )
-        );
-
-        model.addAttribute(
-                "rentTotal",
-                aiAdvisorService.getCategoryTotal(
-                        user,
-                        "Rent"
-                )
-        );
-
-        model.addAttribute(
-                "shoppingTotal",
-                aiAdvisorService.getCategoryTotal(
-                        user,
-                        "Shopping"
-                )
-        );
-
-        model.addAttribute(
-                "transportTotal",
-                aiAdvisorService.getCategoryTotal(
-                        user,
-                        "Transport"
-                )
-        );
-
-    } catch (Exception e) {
-
-        e.printStackTrace();
-
-        model.addAttribute("foodTotal", 0);
-        model.addAttribute("rentTotal", 0);
-        model.addAttribute("shoppingTotal", 0);
-        model.addAttribute("transportTotal", 0);
-    }
-
-    return "advisor";
+    return "ADVISOR CONTROLLER WORKING";
 }
 }
