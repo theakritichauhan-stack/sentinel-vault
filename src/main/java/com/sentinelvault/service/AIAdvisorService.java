@@ -10,4 +10,7 @@ public interface AIAdvisorService {
     );
     int calculateFinancialScore(User user);
     String generateAdvice(User user);
+    double getTotalSpending(User user);
+
+String getTopCategory(User user);
 }
