@@ -8,4 +8,5 @@ public interface AIAdvisorService {
             User user,
             String category
     );
+    int calculateFinancialScore(User user);
 }

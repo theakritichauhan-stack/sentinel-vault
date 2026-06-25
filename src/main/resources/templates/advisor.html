@@ -7,6 +7,12 @@
 
 <h1>AI Financial Advisor</h1>
 
+<h2>
+    Financial Health Score:
+    <span th:text="${financialScore}">
+    </span>/100
+</h2>
+
 <h3>Spending Analysis</h3>
 
 <p>Food: ₹<span th:text="${foodTotal}"></span></p>
@@ -16,6 +22,8 @@
 <p>Shopping: ₹<span th:text="${shoppingTotal}"></span></p>
 
 <p>Transport: ₹<span th:text="${transportTotal}"></span></p>
+
+
 
 </body>
 </html>

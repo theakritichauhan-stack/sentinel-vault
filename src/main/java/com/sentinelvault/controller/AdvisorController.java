@@ -37,6 +37,8 @@ public String advisorPage(Model model,
             )
     );
 
+
+
     model.addAttribute(
             "rentTotal",
             aiAdvisorService.getCategoryTotal(
@@ -60,6 +62,11 @@ public String advisorPage(Model model,
                     "Transport"
             )
     );
+    model.addAttribute(
+        "financialScore",
+        aiAdvisorService
+                .calculateFinancialScore(user)
+);
 
     return "advisor";
 }

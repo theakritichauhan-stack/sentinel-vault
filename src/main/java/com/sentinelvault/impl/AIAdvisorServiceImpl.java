@@ -39,4 +39,25 @@ public class AIAdvisorServiceImpl
 
         return total;
     }
+    @Override
+public int calculateFinancialScore(User user) {
+
+    int score = 100;
+
+    double food =
+            getCategoryTotal(user, "Food");
+
+    double shopping =
+            getCategoryTotal(user, "Shopping");
+
+    if(food > 5000) {
+        score -= 10;
+    }
+
+    if(shopping > 5000) {
+        score -= 15;
+    }
+
+    return Math.max(score, 0);
+}
 }
