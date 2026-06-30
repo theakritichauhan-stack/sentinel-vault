@@ -87,7 +87,6 @@ Sentinel-Vault
 │
 
 ├── src
-│
 
 ├── controller
 
@@ -97,8 +96,6 @@ Sentinel-Vault
 
 ├── entity
 
-├── dto
-
 ├── config
 
 ├── exception
@@ -107,11 +104,7 @@ Sentinel-Vault
 
 ├── static
 
-├── assets
-│
-
 ├── README.md
-│
 
 └── pom.xml
 
@@ -135,3 +128,75 @@ Sentinel-Vault
 .Layered Service Design
 
 ---------------------------------------------------------------------------------------------------------
+
+🤖 AI FINANCIAL ADVISOR
+
+The integrated AI Financial Advisor assists users by providing:
+
+
+.Budget planning
+
+.Savings recommendations
+
+.Financial literacy guidance
+
+.Expense awareness
+
+.Personalized financial suggestions
+
+---------------------------------------------------------------------------------------------------------
+
+
+🚀 GETTING STARTED
+
+1.Clone Repository
+
+git clone https://github.com/yourusername/sentinel-vault.git
+
+2.Navigate
+
+cd sentinel-vault
+
+3.Configure Database
+
+spring.datasource.url=
+spring.datasource.username=
+spring.datasource.password=
+
+4.Run
+
+mvn spring-boot:run 
+
+or visit : http://localhost:8080
+
+-------------------------------------------------------------------------------------------------------
+
+🌟 FUTURE ENHANCEMENTS
+
+
+.Email Notifications
+
+.UPI Integration
+
+.Investment Portfolio Tracker
+
+.Fraud Detection using AI
+
+.Voice-enabled AI Assistant
+
+--------------------------------------------------------------------------------------------------------
+
+
+
+
+👩‍💻 ABOUT THE DEVELOPER
+
+Akriti Chauhan
+
+B.Tech – Computer Science Engineering
+
+Aspiring Java Full-Stack Developer
+
+⭐ Support:If you found this project interesting, consider giving it a ⭐ on GitHub.
+
+--------------------------------------------------------------------------------------------------------
