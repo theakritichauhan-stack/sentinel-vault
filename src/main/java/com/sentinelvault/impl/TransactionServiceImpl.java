@@ -151,6 +151,21 @@ public void lockMoneyForHours(Double amount,
 
     userRepository.save(user);
 }
+@Override
+public int getHighRiskTransactionCount(User user) {
+
+    int count = 0;
+
+    for (Transaction transaction :
+            transactionRepository.findByUser(user)) {
+
+        if ("HIGH".equals(transaction.getRiskLevel())) {
+            count++;
+        }
+    }
+
+    return count;
+}
 
 @Override
 public void emergencyUnlock(User user) {
@@ -171,3 +186,6 @@ public void emergencyUnlock(User user) {
     userRepository.save(user);
 }
 }
+
+    
+

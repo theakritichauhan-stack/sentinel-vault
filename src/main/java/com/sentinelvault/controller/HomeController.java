@@ -171,6 +171,11 @@ public class HomeController {
         model.addAttribute(
                 "totalWithdrawals",
                 totalWithdrawals);
+                
+        model.addAttribute(
+        "highRiskCount",
+        transactionService.getHighRiskTransactionCount(user)
+);
 
         return "dashboard";
     }

@@ -26,6 +26,7 @@ public interface TransactionService {
     void lockMoneyForHours(Double amount,
                            Integer hours,
                            User user);
-
+int getHighRiskTransactionCount(User user);
     void emergencyUnlock(User user);
+    
 }
